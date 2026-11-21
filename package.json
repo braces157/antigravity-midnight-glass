@@ -1,0 +1,18 @@
+{
+  "name": "antigravity-midnight-glass",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Fast, modular Midnight Frosted Glass theme & live telemetry daemon for Google Antigravity",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "install-theme": "node cli.mjs install",
+    "doctor": "node cli.mjs doctor",
+    "relaunch": "node cli.mjs relaunch",
+    "bake": "node cli.mjs bake",
+    "uninstall-theme": "node cli.mjs uninstall",
+    "check": "node --check cli.mjs && node --check src/shared.mjs && node --check src/daemon/index.mjs && node --check src/daemon/bundle.mjs && node --check src/daemon/cdp-client.mjs && node --check src/daemon/cold-start.mjs && node --check src/installer/service.mjs && node --check src/installer/launchers.mjs && node --check src/telemetry/renderer.mjs && node --check src/telemetry/sqlite-reader.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}

@@ -1,0 +1,204 @@
+/* ============================================================================
+ * src/styles/10-surfaces.css — GPU-Free Wallpaper, Transparent Titlebar,
+ * Opaque-Occluding Sticky Sidebar Headers, Frosted Model Picker & Prose
+ * ============================================================================ */
+
+/* Base midnight backdrop */
+html[data-ag-mg-mode="dark"],
+html:has(> body.dark) {
+  background-color: var(--mg-base, #0b0e17) !important;
+}
+
+body.dark:not([data-has-browser-hole="true"]) {
+  position: relative;
+  background: transparent !important;
+  background-color: transparent !important;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Pre-baked blurred WebP wallpaper: ZERO per-frame CSS filter blur on GPU */
+body.dark::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--mg-wallpaper-url, none);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: var(--mg-wallpaper-opacity, 1);
+  filter: var(--mg-wallpaper-filter, none);
+  transform: var(--mg-wallpaper-transform, translateZ(0));
+  contain: strict;
+}
+
+body.dark > #root {
+  position: relative;
+  z-index: 1;
+}
+
+body.dark .agy-shell {
+  background-color: transparent !important;
+}
+
+/* Edge-to-edge chat canvas (remove inner rounded inset frame outline) */
+.agy-sheet[data-sheet-inset] [data-main-content-body]::after,
+.agy-inset-shell [data-side-panel-body]::after {
+  box-shadow: none !important;
+}
+
+/* Seamless top titlebar blending beneath transparent Windows caption overlay
+ * (Zero backdrop-filter: sits directly over the pre-baked blurred wallpaper) */
+body.dark .agy-shell > div:first-child,
+body.dark [data-testid="title-menu-bar"] {
+  background-color: rgba(11, 14, 23, 0.22) !important;
+}
+
+/* ============================================================================
+ * Sidebar & Opaque-Occluding Sticky Headers (Fixes "Projects" Overlap!)
+ * Static sidebar skips full-height GPU blur (pre-baked wallpaper is already
+ * blurred); ONLY the 24px sticky header uses blur to occlude scrolling rows.
+ * ============================================================================ */
+body.dark aside,
+body.dark [data-testid="sidebar"],
+body.dark .monaco-workbench .part.sidebar {
+  background-color: rgba(11, 15, 25, 0.44) !important;
+}
+
+/* High-opacity frosted backing ONLY on the 24px sticky section header bar
+ * (direct-child `>` avoids matching the entire outer `.bg-sidebar` container!) */
+body.dark .bg-sidebar:has(> [data-testid="section-header"]),
+body.dark [data-testid="section-header"],
+body.dark [data-testid="section-header"] .group\/section-header,
+body.dark div.bg-sidebar[style*="sticky"] {
+  background-color: var(--mg-sticky-bg, rgba(11, 15, 25, 0.94)) !important;
+  backdrop-filter: blur(24px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(135%) !important;
+  z-index: 20 !important;
+}
+
+body.dark .bg-sidebar:has(> [data-testid="section-header"]) {
+  box-shadow: 0 4px 12px rgba(6, 9, 16, 0.55) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark [data-testid="section-header"] h2 {
+  opacity: 0.72 !important;
+  color: #cbd2e2 !important;
+}
+
+/* Active & hover sidebar rows */
+body.dark :is([data-testid="conversation-row-sidebar"][data-selected="true"], .agy-sidebar-row[data-selected="true"]) {
+  background-color: rgba(255, 255, 255, 0.10) !important;
+  --row-bg: rgba(255, 255, 255, 0.10) !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07) !important;
+}
+
+body.dark :is([data-testid="conversation-row-sidebar"], .agy-sidebar-row):not([data-selected="true"]):hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 10px !important;
+}
+
+/* ============================================================================
+ * Model Picker, Popovers, Menus, Fastpick & Dialogs (Fixes Transparent Bleed!)
+ * ============================================================================ */
+body.dark :is(
+  .surface-glass,
+  .agy-overlay,
+  .agy-fastpick.surface-glass,
+  .quick-input-widget.surface-glass,
+  [role="menu"],
+  [role="listbox"],
+  [data-select-popup],
+  [data-radix-menu-content],
+  [data-radix-popper-content-wrapper] > [role="menu"],
+  [data-radix-popper-content-wrapper] > [role="listbox"],
+  [data-radix-popper-content-wrapper] > div[data-side],
+  [role="dialog"]
+) {
+  background-color: var(--mg-overlay-bg, rgba(13, 17, 28, 0.93)) !important;
+  backdrop-filter: blur(28px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(150%) !important;
+  border: 1px solid var(--mg-overlay-border, rgba(255, 255, 255, 0.12)) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--mg-overlay-shadow) !important;
+  color: var(--mg-ink-2) !important;
+}
+
+/* Clean, legible rows inside Model Picker & Menus */
+body.dark :is([role="menu"], [role="listbox"], .agy-overlay, [data-select-popup]) :is([role="menuitem"], [role="option"], .agy-overlay-item) {
+  border-radius: 9px !important;
+  transition: background-color 110ms ease !important;
+}
+
+body.dark :is([role="menu"], [role="listbox"], .agy-overlay, [data-select-popup]) :is([role="menuitem"], [role="option"], .agy-overlay-item):is(:hover, [data-highlighted], [data-selected="true"], [aria-selected="true"]) {
+  background-color: rgba(255, 255, 255, 0.09) !important;
+  color: #ffffff !important;
+}
+
+body.dark :is([role="menu"], [role="listbox"], .agy-overlay, [data-select-popup]) [data-disabled="true"],
+body.dark :is([role="menu"], [role="listbox"], .agy-overlay, [data-select-popup]) [aria-disabled="true"] {
+  opacity: 0.45 !important;
+}
+
+/* Crisp separator lines inside menus */
+body.dark :is([role="menu"], [role="listbox"], .agy-overlay) [role="separator"],
+body.dark .bg-border {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ============================================================================
+ * Markdown Prose, Code Cards & Single-Border User Bubbles
+ * ============================================================================ */
+body.dark :is([data-markdown-root], [data-testid="user-message-content"], .prose, .markdown) {
+  font-family: var(--font-sans) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  letter-spacing: -0.008em !important;
+  color: var(--mg-ink-2) !important;
+}
+
+body.dark :is([data-markdown-root], .prose, .markdown) :is(h1, h2, h3, h4) {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--mg-ink-1) !important;
+}
+
+body.dark :is([data-markdown-root], .prose, .markdown) :is(strong, b) {
+  font-weight: 600 !important;
+  color: var(--mg-ink-1) !important;
+}
+
+body.dark :is([data-markdown-root], .select-text, .prose, .markdown) :not(pre) > code {
+  font-family: var(--font-mono) !important;
+  font-size: 0.875em !important;
+  background-color: rgba(255, 255, 255, 0.09) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.13) !important;
+  border-radius: 5px !important;
+  padding: 0.1em 0.38em !important;
+  color: #eceff6 !important;
+}
+
+/* Obsidian code cards & user bubbles skip per-card backdrop-filter to avoid
+ * dozens of GPU blur passes per scroll frame (wallpaper is pre-baked blurred). */
+body.dark pre,
+body.dark [class*="terminal-card"] {
+  background: var(--mg-code-bg, rgba(10, 12, 19, 0.78)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+/* Single-border frosted glass user message bubbles */
+body.dark .agy-user-bubble {
+  background-color: rgba(18, 22, 34, 0.46) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .agy-user-bubble [data-testid="user-message-content"] {
+  background-color: transparent !important;
+  border: none !important;
+}

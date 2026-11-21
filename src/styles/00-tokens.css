@@ -1,0 +1,104 @@
+/* ============================================================================
+ * src/styles/00-tokens.css — Midnight Frosted Glass Design Tokens & Typography
+ * ============================================================================ */
+
+:root,
+html,
+body,
+body[data-agy-theme],
+body[data-agy-theme] :where(.font-sans),
+body[data-agy-font],
+body[data-agy-font="google-sans"],
+body[data-agy-font="inter"],
+body[data-agy-font] :where(.font-sans),
+body[data-agy-theme] :where(.font-mono),
+body[data-agy-font] :where(.font-mono) {
+  --vscode-font-family: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif !important;
+  --font-sans: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif !important;
+  --default-font-family: var(--font-sans) !important;
+  --font-mono: "JetBrainsMono NF", "JetBrainsMono Nerd Font", "MapleMono NF", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  --editor-font-family: var(--font-mono) !important;
+  --default-mono-font-family: var(--font-mono) !important;
+  --font-weight-light: 300 !important;
+  --font-weight-normal: 400 !important;
+  --font-weight-medium: 500 !important;
+  --font-weight-semibold: 600 !important;
+  --font-weight-bold: 700 !important;
+  --agy-gsf-h1-wght: 600 !important;
+  --agy-gsf-h3-wght: 600 !important;
+  --agy-gsf-bold-wght: 600 !important;
+  --agy-gsf-italic: italic !important;
+  --agy-gsf-slnt: 0 !important;
+}
+
+html, body, body[data-agy-font], button, select, nav, header, aside {
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+code, pre, kbd, samp, .font-mono, [class*="language-"], .monaco-editor, .xterm, pre * {
+  font-family: var(--font-mono) !important;
+}
+
+/* Midnight Frosted Dark Tokens */
+html[data-ag-mg-mode="dark"],
+html[data-ag-mg-mode="dark"] body,
+html:has(> body.dark),
+body.dark,
+body.theme-dark,
+body[data-agy-theme].dark {
+  --mg-base: #0b0e17;
+  --mg-accent: #4f83f2;
+  --mg-accent-soft: rgba(88, 126, 196, 0.66);
+  --mg-accent-soft-hover: rgba(102, 144, 218, 0.90);
+  --mg-overlay-bg: rgba(13, 17, 28, 0.93);
+  --mg-overlay-border: rgba(255, 255, 255, 0.12);
+  --mg-overlay-shadow: 0 18px 48px rgba(0, 0, 0, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --mg-sticky-bg: rgba(11, 15, 25, 0.95);
+  --mg-composer-bg: rgba(14, 16, 24, 0.36);
+  --mg-composer-bg-focus: rgba(16, 19, 30, 0.44);
+  --mg-composer-border: rgba(255, 255, 255, 0.11);
+  --mg-composer-border-focus: rgba(255, 255, 255, 0.20);
+  --mg-code-bg: rgba(10, 12, 19, 0.72);
+  --mg-ink-1: #ffffff;
+  --mg-ink-2: #e8ebf2;
+  --mg-ink-3: rgba(232, 236, 246, 0.60);
+
+  --background: rgba(11, 14, 23, 0.15) !important;
+  --content: rgba(11, 14, 23, 0.11) !important;
+  --foreground: #ffffff !important;
+  --primary: var(--mg-accent) !important;
+  --primary-foreground: #ffffff !important;
+  --link: #6ea1ff !important;
+  --shell: rgba(12, 16, 26, 0.30) !important;
+  --sidebar: rgba(12, 16, 26, 0.40) !important;
+  --vscode-sideBar-background: rgba(12, 16, 26, 0.40) !important;
+  --sidebar-secondary: rgba(255, 255, 255, 0.08) !important;
+  --sidebar-muted: rgba(255, 255, 255, 0.05) !important;
+  --sidebar-border: rgba(255, 255, 255, 0.07) !important;
+  --secondary: rgba(255, 255, 255, 0.08) !important;
+  --secondary-foreground: #e2e6f0 !important;
+  --muted: rgba(255, 255, 255, 0.05) !important;
+  --muted-foreground: #969eae !important;
+  --placeholder: rgba(210, 216, 230, 0.44) !important;
+  --card: rgba(15, 19, 30, 0.54) !important;
+  --card-border: rgba(255, 255, 255, 0.09) !important;
+  --card-edge: rgba(255, 255, 255, 0.07) !important;
+  --sash-line: rgba(255, 255, 255, 0.08) !important;
+  --border: rgba(255, 255, 255, 0.08) !important;
+  --glass: var(--mg-overlay-bg) !important;
+  --glass-border: var(--mg-overlay-border) !important;
+  --glass-highlight: rgba(255, 255, 255, 0.07) !important;
+  --scrim: rgba(4, 6, 12, 0.62) !important;
+  --onyx-frame: rgba(15, 19, 30, 0.50) !important;
+  --onyx-well: rgba(12, 15, 24, 0.42) !important;
+  --onyx-raised: rgba(24, 30, 46, 0.62) !important;
+  --onyx-selected: rgba(255, 255, 255, 0.09) !important;
+  --onyx-key: rgba(255, 255, 255, 0.08) !important;
+  --home-glow: transparent !important;
+  --error: #f87171 !important;
+  --warning: #fbbf24 !important;
+  --success: #34d399 !important;
+  --code-foreground: #eceff6 !important;
+  --editor-selection-background: rgba(79, 131, 242, 0.36) !important;
+}

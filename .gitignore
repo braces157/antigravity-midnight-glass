@@ -1,0 +1,19 @@
+# Runtime & OS generated files
+*.vbs
+*.pid
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies & scratch
+node_modules/
+.audit/
+.wt/
+.taste-skill/
+scratch/

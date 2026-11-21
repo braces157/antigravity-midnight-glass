@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "channel": "auto",
+  "accent": "#4f83f2",
+  "wallpaper": {
+    "blur": 8,
+    "brightness": 0.62,
+    "contrast": 1.06,
+    "saturate": 1.16,
+    "opacity": 0.82
+  },
+  "telemetry": {
+    "enabled": true,
+    "layout": "compact",
+    "cacheMode": "session",
+    "contextLimit": "auto"
+  },
+  "cdpAutoRelaunch": true
+}
