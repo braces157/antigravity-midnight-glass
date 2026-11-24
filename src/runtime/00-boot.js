@@ -1,9 +1,7 @@
-/* src/runtime/00-boot.js — Clean Hot-Reload Teardown & Style Mounting */
 (function (BOOT) {
   'use strict';
   if (!BOOT || typeof document === 'undefined') return;
 
-  // Tear down prior hot-reload instance cleanly
   if (Array.isArray(window.__ag_mg_cleanups)) {
     for (const fn of window.__ag_mg_cleanups) {
       try { fn(); } catch {}
@@ -12,7 +10,6 @@
   const cleanups = (window.__ag_mg_cleanups = []);
   const onCleanup = (fn) => { if (typeof fn === 'function') cleanups.push(fn); };
 
-  // Completely disarm and remove any legacy antigravity-codex-theme timers, observers & DOM nodes
   if (Array.isArray(window.__ag_cleanup_fns)) {
     for (const fn of window.__ag_cleanup_fns) { try { fn(); } catch {} }
     window.__ag_cleanup_fns = [];

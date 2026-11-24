@@ -1,4 +1,3 @@
-/* src/runtime/20-live-probe.js — Lightweight Live Status Probe */
   const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
   const escapeUiHtml = (s) =>

@@ -1,4 +1,3 @@
-/* src/runtime/10-theme-overlay.js — Dark Mode Sync & Transparent Windows TitleBarOverlay */
   const isSwarmFrame = Boolean(window.location && window.location.protocol === 'plugin:');
 
   const syncModeAndOverlay = () => {

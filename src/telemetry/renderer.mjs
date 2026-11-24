@@ -1,7 +1,3 @@
-/**
- * src/telemetry/renderer.mjs — 3-Group SVG Below-Composer Strip & Midnight Glass L1/L2 Popover
- */
-
 export function fmtTok(n) {
   if (!n || n <= 0) return '0';
   if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';

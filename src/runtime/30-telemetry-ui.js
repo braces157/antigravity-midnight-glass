@@ -1,4 +1,3 @@
-/* src/runtime/30-telemetry-ui.js — Below-Composer Strip, Above-Composer Popover & Per-Turn Badges */
   const metricsByCid = (window.__ag_mg_metrics = window.__ag_mg_metrics || {});
   const lastSeenGenByCid = {};
   const lastTurnKeyByPane = {};
@@ -44,7 +43,6 @@
     return out;
   };
 
-  // Anchor telemetry popover cleanly ABOVE the entire composer card (never overlapping typed text!)
   const positionPopover = (popover, inputBox, strip) => {
     if (!popover) return;
     const boxRect = inputBox ? inputBox.getBoundingClientRect() : null;
@@ -119,7 +117,6 @@
       note.className = 'mg-wait-note' + (vis.noteClass ? ' ' + vis.noteClass : '');
       note.innerHTML = vis.noteHtml;
     }
-    // Live Model Quota / Usage section from Antigravity React state (zero extra API calls)
     let quotaHost = pop.querySelector('.mg-quota-blk');
     if (!quotaHost) {
       const l2 = pop.querySelector('.mg-l2');
@@ -234,7 +231,6 @@
     return strip;
   };
 
-  // Per-turn inline badges & hover tooltip
   const ensureTurnTooltip = () => {
     let tt = document.getElementById('ag-mg-turn-tooltip');
     if (tt || !document.body) return tt;
@@ -376,7 +372,6 @@
 
   window.__ag_mg_refresh = refreshTelemetryUi;
 
-  // Outside click & Escape key close pinned popover
   const onDocClick = (e) => {
     if (!popPinned) return;
     const pop = document.getElementById('ag-mg-popover');

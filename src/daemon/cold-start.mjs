@@ -1,6 +1,3 @@
-/**
- * src/daemon/cold-start.mjs — Safe Cold-Start CDP Relay for Antigravity 2.33+ (WAL-Protected)
- */
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn, spawnSync } from 'node:child_process';

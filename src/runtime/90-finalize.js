@@ -1,4 +1,3 @@
-/* src/runtime/90-finalize.js — Optional User Runtime Hook */
   if (BOOT.userJs && BOOT.userJs.trim()) {
     try {
       const ctx = { version: BOOT.version, config: BOOT.config, onCleanup };
