@@ -1,8 +1,3 @@
-/* ============================================================================
- * src/styles/20-composer.css — Single Glass Composer Card & Reordered Footer
- * ============================================================================ */
-
-/* Remove outer double-tray wrapper */
 body.dark :is(#antigravity\.agentSidePanelInputBox, [id="antigravity.agentSidePanelInputBox"], .surface-composer.bg-card-border) {
   background-color: transparent !important;
   border: none !important;
@@ -12,7 +7,6 @@ body.dark :is(#antigravity\.agentSidePanelInputBox, [id="antigravity.agentSidePa
   outline: none !important;
 }
 
-/* Single translucent frosted-glass composer card */
 body.dark :is(
   .surface-composer > .surface-composer-card,
   .surface-composer-card.bg-card,
@@ -40,7 +34,6 @@ body.dark :is(
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Flush bottom spacing matching DSH NEXT (zero wasted bottom margin) */
 [data-main-content-body="true"] {
   margin-bottom: 0px !important;
 }
@@ -65,7 +58,6 @@ body.dark :is(
   display: contents !important;
 }
 
-/* 1. Left circular "+" Add context button */
 #antigravity\.agentSidePanelInputBox .agy-composer-footer button[aria-label="Add context"] {
   order: 1 !important;
   width: 28px !important;
@@ -84,7 +76,6 @@ body.dark :is(
   color: #ffffff !important;
 }
 
-/* 2. Permissions trigger right beside "+" */
 #antigravity\.agentSidePanelInputBox .agy-composer-footer [data-testid="permissions-selector-trigger"] {
   order: 2 !important;
   height: 28px !important;
@@ -100,7 +91,6 @@ body.dark :is(
   color: #ffffff !important;
 }
 
-/* 3. Model selector pushed to the right */
 #antigravity\.agentSidePanelInputBox .agy-composer-footer > div:first-child > div:has([data-testid="model-selector-trigger"]) {
   order: 3 !important;
   margin-left: auto !important;
@@ -120,7 +110,6 @@ body.dark :is(
   color: #ffffff !important;
 }
 
-/* 4. Rightmost action buttons group (mic / voice / send / cancel) */
 #antigravity\.agentSidePanelInputBox .agy-composer-footer > div:last-child > div:last-child {
   order: 4 !important;
   display: inline-flex !important;
@@ -129,7 +118,6 @@ body.dark :is(
   flex-shrink: 0 !important;
 }
 
-/* Soft periwinkle-blue circular primary action button */
 #antigravity\.agentSidePanelInputBox :is(button[data-testid="send-button"], .agy-send-button, [data-testid="voice-live-pill"]) {
   width: 30px !important;
   height: 30px !important;
@@ -149,7 +137,6 @@ body.dark :is(
   color: #eaeaea !important;
 }
 
-/* Preserve voice-live-pill animated icon visibility */
 [data-testid="voice-live-pill"] :is(.opacity-0, [class*="opacity-0"], [class*="opacity-0"] *) {
   opacity: 0 !important;
   visibility: hidden !important;

@@ -1,6 +1,3 @@
-/**
- * src/daemon/cdp-client.mjs — Resilient 2-Tier CDP Bridge (Zero Unhandled Rejections)
- */
 import {
   DEFAULT_ALLOWED_ORIGINS,
   isAllowedOrigin,
@@ -82,7 +79,6 @@ export function createCdpBridge({ bundleCtrl, metricsReader, coldStartCtrl, runO
         if (!hostOk) return false;
         const { assetsHash, assetsScript, runtimeScript } = bundleCtrl.getState();
 
-        // Tier 1: Only transfer static assets (fonts + pre-baked wallpaper) when missing or hash changed
         if (forceAssets) {
           await send('Runtime.evaluate', { expression: assetsScript, returnByValue: true });
         } else {
@@ -95,7 +91,6 @@ export function createCdpBridge({ bundleCtrl, metricsReader, coldStartCtrl, runO
           }
         }
 
-        // Tier 2: Lean theme CSS + runtime (~20KB)
         const res = await send('Runtime.evaluate', { expression: runtimeScript, returnByValue: true });
         if (res?.result?.exceptionDetails) {
           console.error('[MidnightGlass] Inject exception:', res.result.exceptionDetails.exception?.description || res.result.exceptionDetails.text);

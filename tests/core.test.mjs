@@ -19,12 +19,10 @@ test('2-tier bundle splits static assets from lean live runtime', () => {
   assert.ok(st.assetsScript.includes('Inter Variable'));
   assert.ok(st.assetsScript.includes('data:image/webp;base64,'), 'Uses pre-baked GPU-free WebP wallpaper');
   assert.ok(st.assetsScript.includes('--mg-wallpaper-filter:none'), 'Disables runtime CSS blur when baked');
-  // Lean live runtime should NOT re-embed base64 fonts or wallpaper
   assert.equal(st.runtimeScript.includes('data:font/woff2;base64,'), false);
   assert.equal(st.runtimeScript.includes('data:image/webp;base64,'), false);
   assert.ok(st.runtimeScript.length < 60000, `Expected lean runtime < 60KB, got ${st.runtimeScript.length}`);
 
-  // Second call with no file edits should be a clean cache hit
   const res2 = ctrl.rebuildIfNeeded();
   assert.equal(res2.assetsChanged, false);
   assert.equal(res2.runtimeChanged, false);

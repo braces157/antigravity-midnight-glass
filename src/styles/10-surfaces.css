@@ -1,9 +1,3 @@
-/* ============================================================================
- * src/styles/10-surfaces.css — GPU-Free Wallpaper, Transparent Titlebar,
- * Opaque-Occluding Sticky Sidebar Headers, Frosted Model Picker & Prose
- * ============================================================================ */
-
-/* Base midnight backdrop */
 html[data-ag-mg-mode="dark"],
 html:has(> body.dark) {
   background-color: var(--mg-base, #0b0e17) !important;
@@ -42,7 +36,6 @@ body.dark .agy-shell {
   background-color: transparent !important;
 }
 
-/* Edge-to-edge chat canvas (remove inner rounded inset frame outline) */
 .agy-sheet[data-sheet-inset] [data-main-content-body]::after,
 .agy-inset-shell [data-side-panel-body]::after {
   box-shadow: none !important;
@@ -55,11 +48,8 @@ body.dark [data-testid="title-menu-bar"] {
   background-color: rgba(11, 14, 23, 0.22) !important;
 }
 
-/* ============================================================================
- * Sidebar & Opaque-Occluding Sticky Headers (Fixes "Projects" Overlap!)
- * Static sidebar skips full-height GPU blur (pre-baked wallpaper is already
- * blurred); ONLY the 24px sticky header uses blur to occlude scrolling rows.
- * ============================================================================ */
+/* Static sidebar skips full-height GPU blur (pre-baked wallpaper is already
+ * blurred); ONLY the 24px sticky header uses blur to occlude scrolling rows. */
 body.dark aside,
 body.dark [data-testid="sidebar"],
 body.dark .monaco-workbench .part.sidebar {
@@ -88,7 +78,6 @@ body.dark [data-testid="section-header"] h2 {
   color: #cbd2e2 !important;
 }
 
-/* Active & hover sidebar rows */
 body.dark :is([data-testid="conversation-row-sidebar"][data-selected="true"], .agy-sidebar-row[data-selected="true"]) {
   background-color: rgba(255, 255, 255, 0.10) !important;
   --row-bg: rgba(255, 255, 255, 0.10) !important;
@@ -101,9 +90,6 @@ body.dark :is([data-testid="conversation-row-sidebar"], .agy-sidebar-row):not([d
   border-radius: 10px !important;
 }
 
-/* ============================================================================
- * Model Picker, Popovers, Menus, Fastpick & Dialogs (Fixes Transparent Bleed!)
- * ============================================================================ */
 body.dark :is(
   .surface-glass,
   .agy-overlay,
@@ -127,7 +113,6 @@ body.dark :is(
   color: var(--mg-ink-2) !important;
 }
 
-/* Clean, legible rows inside Model Picker & Menus */
 body.dark :is([role="menu"], [role="listbox"], .agy-overlay, [data-select-popup]) :is([role="menuitem"], [role="option"], .agy-overlay-item) {
   border-radius: 9px !important;
   transition: background-color 110ms ease !important;
@@ -143,15 +128,11 @@ body.dark :is([role="menu"], [role="listbox"], .agy-overlay, [data-select-popup]
   opacity: 0.45 !important;
 }
 
-/* Crisp separator lines inside menus */
 body.dark :is([role="menu"], [role="listbox"], .agy-overlay) [role="separator"],
 body.dark .bg-border {
   background-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* ============================================================================
- * Markdown Prose, Code Cards & Single-Border User Bubbles
- * ============================================================================ */
 body.dark :is([data-markdown-root], [data-testid="user-message-content"], .prose, .markdown) {
   font-family: var(--font-sans) !important;
   font-size: 14px !important;
@@ -191,7 +172,6 @@ body.dark [class*="terminal-card"] {
   border-radius: 12px !important;
 }
 
-/* Single-border frosted glass user message bubbles */
 body.dark .agy-user-bubble {
   background-color: rgba(18, 22, 34, 0.46) !important;
   border: 1px solid rgba(255, 255, 255, 0.09) !important;

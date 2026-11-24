@@ -1,6 +1,3 @@
-/**
- * core/daemon/sqlite-metrics.mjs — Incremental Conversation DB Reader (node:sqlite)
- */
 import fs from 'node:fs';
 import path from 'node:path';
 import {

@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-/**
- * src/daemon/index.mjs — Event-Driven Midnight Glass Theme & Telemetry Daemon
- */
 import fs from 'node:fs';
 import path from 'node:path';
 import { PID_FILE, isConfirmedNodePid } from '../shared.mjs';
@@ -74,7 +71,6 @@ export async function startDaemon() {
     process.exit(0);
   }
 
-  // Event-driven hot reload on user/, src/styles/, src/runtime/, assets/, and DevToolsActivePort
   let debounceTimer = null;
   const triggerFastSync = (forceDiscover = false) => {
     if (debounceTimer) clearTimeout(debounceTimer);
@@ -103,7 +99,6 @@ export async function startDaemon() {
     } catch {}
   }
 
-  // Event-driven SQLite telemetry updates (~120ms latency without tight polling)
   let metricsDebounce = null;
   for (const dir of convDirs) {
     try {
@@ -118,7 +113,6 @@ export async function startDaemon() {
     } catch {}
   }
 
-  // Relaxed fallback heartbeat (event watchers handle hot-reloads & live telemetry)
   setInterval(() => {
     cdp.sync(false).catch(() => {});
   }, 3000);

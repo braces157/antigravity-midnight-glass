@@ -1,6 +1,3 @@
-/**
- * core/daemon/ls-log.mjs — Antigravity language_server.log Retry Tail Parser
- */
 import fs from 'node:fs';
 
 export function getLsLogSig(lsLogFile) {

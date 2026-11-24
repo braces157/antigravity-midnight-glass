@@ -25,7 +25,6 @@ switch (cmd) {
     const argv = ensureArgvRemoteDebugging('auto');
     const shortcuts = ensureWindowsShortcuts();
     const service = registerService(ROOT_DIR);
-    // Run one immediate synchronous pass so the live window updates before returning
     const daemonEntry = path.join(ROOT_DIR, 'src', 'daemon', 'index.mjs');
     spawnSync(process.execPath, ['--disable-warning=ExperimentalWarning', daemonEntry, '--once'], { stdio: 'inherit' });
     sleepSync(800);

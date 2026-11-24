@@ -1,6 +1,3 @@
-/**
- * core/daemon/protobuf.mjs — Zero-Dependency Wire Protobuf & Step Metadata Parser
- */
 export function parseProto(buf) {
   let i = 0;
   const out = new Map();

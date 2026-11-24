@@ -1,6 +1,3 @@
-/**
- * src/installer/service.mjs — Windows User-Scoped Task Scheduler & Process Isolation Manager
- */
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -51,7 +48,6 @@ export function registerService(projectRoot) {
     const runtimeDir = path.join(os.homedir(), '.gemini', 'antigravity', 'midnight-glass');
     fs.mkdirSync(runtimeDir, { recursive: true });
     const vbsPath = path.join(runtimeDir, SERVICE_VBS_NAME);
-    // Clean up any legacy in-repo VBS file if present
     const legacyRepoVbs = path.join(projectRoot, SERVICE_VBS_NAME);
     try { if (fs.existsSync(legacyRepoVbs)) fs.unlinkSync(legacyRepoVbs); } catch {}
     const cmd = `""${process.execPath}"" --disable-warning=ExperimentalWarning ""${daemonEntry}""`;

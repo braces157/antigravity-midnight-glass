@@ -1,6 +1,3 @@
-/**
- * src/shared.mjs — Shared Cross-Platform Utilities, Port Discovery & JSONC Helpers
- */
 import fs from 'node:fs';
 import http from 'node:http';
 import os from 'node:os';
